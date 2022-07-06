@@ -18,6 +18,14 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
+### Local Dev
+before you run the app, you will have to modify your `/etc/hosts` file to add a `app.localhost` path, so that you can access the app routes.
+
+run: `sudo vi /etc/hosts`
+add somehwere in the hosts file:
+`app.localhost  127.0.0.1`
+hit "esc" and put `:wq` and hit `enter` on your keyboard.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
