@@ -25,13 +25,13 @@ export default function middleware(req: NextRequest) {
 
   // rewrites for app pages
   if (currentHost == "app") {
+    const hasAuthCookie = (req.cookies.get("next-auth.session-token") || req.cookies.get("__Secure-next-auth.session-token"))
+    const isLoggedIn = url.pathname === "/login" && hasAuthCookie
     if (
         // TODO: handle authentication here, checking for cookie existence.
         // if the pathname is login, and the user is already logged in, we push
-        // them to the index page of the app/ directory.
-      url.pathname === "/login" &&
-      (req.cookies.get("next-auth.session-token") ||
-        req.cookies.get("__Secure-next-auth.session-token"))
+        // them to the index page of the app/ directory and handle verifying the cookie there.
+      isLoggedIn
     ) {
       url.pathname = "/";
       return NextResponse.redirect(url);
