@@ -1,29 +1,42 @@
+from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from enum import Enum
+from typing import Set
 
 
-class DataDecoder:
+@dataclass
+class DataModel:
     pass
-
-
-class DataEncoder:
-    pass
-
-
-class HeaderAndBytesDataEncoder:
-    pass
-
-
-class DataType(Enum):
-    header_and_bytes = "header_and_bytes"
 
 
 @dataclass
 class Port:
     number: int
-    data_type: str
+    data_model: DataModel
+
+    def __hash__(self):
+        return hash(self.number)
 
 
 @dataclass
 class Sensor:
-    pass
+    ports: Set[Port]
+    name: str = None
+
+
+class DataDecoder(ABC):
+    def __init__(self, sensor: Sensor):
+        self.sensor = sensor
+
+    @abstractmethod
+    def decode(self, data: bytes):
+        ...
+
+
+class DataEncoder(ABC):
+    def __init__(self, sensor: Sensor):
+        self.sensor = sensor
+
+    @abstractmethod
+    def encode(self, data: dict):
+        ...
