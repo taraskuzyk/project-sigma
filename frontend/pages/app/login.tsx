@@ -1,14 +1,14 @@
 import Button from "~/components/Button"
-import Layout from "~/components/Layout"
+import AuthLayout from "~/components/AuthLayout"
 
 function AppLoginPage() {
     return (
-        <Layout>
+        <AuthLayout>
             <h1>Log In</h1>
             <Button
                 type='button'
             >Click me, I do nothing!</Button>
-        </Layout>
+        </AuthLayout>
     )
 }
 
