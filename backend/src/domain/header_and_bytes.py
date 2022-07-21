@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum
-from typing import List
+from typing import List, Dict
 
 from domain.model import DataDecoder
 
@@ -32,9 +32,15 @@ class Group:
 
 @dataclass
 class HeaderAndBytesDataModel:
-    header_vs_decoding_parameters: Dict[
-        str,
-    ]
+    header_length: int
+    header_vs_decoding_parameters: Dict[List[int], Group]
+
+
+
+@dataclass
+class Payload:
+    port: int
+    payload_bytes: List[int]
 
 
 class HeaderAndBytesDataEncoder(DataDecoder):

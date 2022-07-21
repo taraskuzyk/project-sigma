@@ -36,3 +36,26 @@ def _integer_power(base: int, power: int) -> int:
 
 def _power_of_two(power: int) -> int:
     return _integer_power(2, power)
+
+
+def extract_bytes(chunk: List[int], bit_high: int, bit_low: int) -> List[int]:
+    string = _chunk_to_string(chunk)
+    len_string = len(string)
+    string_to_extract_from = string[len_string - bit_high - 1: len_string - bit_low]
+    no_of_bits_to_extract = bit_high - bit_low + 1
+    total_bytes = _get_total_bytes(no_of_bits_to_extract)
+    extracted = []
+    for _ in range(total_bytes):
+        consumed = string_to_extract_from[-8:]
+        string_to_extract_from = string_to_extract_from[:-8]
+        converted = int(consumed, base=2)
+        extracted = [converted, *extracted]
+    return extracted
+
+
+def _get_total_bytes(total_bits: int) -> int:
+    return total_bits // 8 if total_bits % 8 == 0 else total_bits // 8 + 1
+
+
+def _chunk_to_string(chunk: List[int]) -> str:
+    return "".join([format(portion, "08b") for portion in chunk])
