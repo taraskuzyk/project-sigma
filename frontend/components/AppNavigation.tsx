@@ -1,6 +1,7 @@
+import classNames from "classnames"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import Button from "./Button"
+import Button, { buttonVariants } from "./Button"
 
 export type NavItem = {
     href: string
@@ -54,8 +55,18 @@ function AppNavigation({
                         )
                     })}
                 </div>
-                <div>
-                    <Button>Jane Doe</Button>
+                <div className='flex flex-row items-center space-x-4'>
+                    <Link href='/sensors/new'>
+                        <a
+                            className={classNames(
+                                buttonVariants.common,
+                                buttonVariants.default.blue
+                            )}
+                        >
+                            Create Sensor
+                        </a>
+                    </Link>
+                    <Button variant='ghost'>Jane Doe</Button>
                 </div>
             </div>
         </nav>
