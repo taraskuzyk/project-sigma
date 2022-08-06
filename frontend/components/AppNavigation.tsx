@@ -56,7 +56,7 @@ function AppNavigation({
                     })}
                 </div>
                 <div className='flex flex-row items-center space-x-4'>
-                    <Link href='/sensors/new'>
+                    <Link href='/presets/new'>
                         <a
                             className={classNames(
                                 buttonVariants.common,

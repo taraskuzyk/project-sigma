@@ -8,7 +8,7 @@ type AppLayoutProps = {
 
 const navItems: NavItem[] = [
     { href: '/', name: 'Dashboard' },
-    { href: '/sensors', name: 'My Sensors', }
+    { href: '/presets', name: 'My Sensors', }
 ]
 
 function AppLayout({ children, sidebar }: AppLayoutProps) {

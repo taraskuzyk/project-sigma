@@ -6,7 +6,7 @@ export const config = {
   matcher: [
     "/",
     "/([^/.]*)", // exclude `/public` files by matching all paths except for paths containing `.` (e.g. /logo.png)
-    "/sensors/:path*",
+    "/presets/:path*",
     // "/post/:path*",
   ],
 };
