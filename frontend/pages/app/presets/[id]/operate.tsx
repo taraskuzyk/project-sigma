@@ -35,7 +35,7 @@ export const getServerSideProps: GetServerSideProps<{ presetId: string }, { id: 
     }
 }
 
-function AppPresetIndex({ presetId }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+function AppPresetOperate({ presetId }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const { data } = useQuery<SensorPreset>([`presets/${presetId}`])
     return (
         <AppLayout
@@ -51,10 +51,10 @@ function AppPresetIndex({ presetId }: InferGetServerSidePropsType<typeof getServ
                 </div>
             </header>
             <main>
-                
+                <code>{`TODO: list events, and show stuff. allow user to send stuff.`}</code>
             </main>
         </AppLayout>
     )
 }
 
-export default AppPresetIndex
+export default AppPresetOperate
